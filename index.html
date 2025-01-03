@@ -1,0 +1,25 @@
+<script src="https://cdn.jsdelivr.net/npm/gun/gun.min.js"></script>
+
+<body>
+  <div id="gunName"></div>
+  <div id="gunAge"></div>
+  <button onclick="add()">add</button>
+  <button onclick="update()">update</button>
+</body>
+
+<script>
+  const gun = Gun({ peers: ["https://gun-manhattan.herokuapp.com/gun"] });
+
+  const add = () => {
+    gun.get("user").put({ name: "Alice", age: 25 });
+  };
+
+  const update = () => {
+    gun.get("user").put({ age: 26 });
+  };
+
+  gun.get("user").on((data) => {
+    gunName.innerHTML = data.name;
+    gunAge.innerHTML = data.age;
+  });
+</script>
