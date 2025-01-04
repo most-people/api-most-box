@@ -1,5 +1,9 @@
 {
     "scripts": {
-        "start": "npx serve ./ -p 2025"
+        "gun": "node gun.js"
+    },
+    "dependencies": {
+        "gun": "^0.2020.1240",
+        "express": "^4.21.2"
     }
 }
